@@ -46,8 +46,6 @@ The `doWithSpring` callback method can be used to add beans with the BeanBuilder
 
 [source,groovy]
 ----
-import grails.test.mixin.support.GrailsUnitTestMixin
-
 import org.junit.ClassRule
 import org.junit.rules.TestRule
 
@@ -56,7 +54,6 @@ import spock.lang.IgnoreRest
 import spock.lang.Shared;
 import spock.lang.Specification
 
-@TestMixin(GrailsUnitTestMixin)
 class StaticCallbacksSpec extends Specification {
     static doWithSpring = {
         myService(MyService)
@@ -89,7 +86,6 @@ In this case, a clean application context and grails application instance is ini
 
 [source,groovy]
 ----
-import grails.test.mixin.support.GrailsUnitTestMixin
 import grails.test.runtime.FreshRuntime;
 
 import org.junit.ClassRule
@@ -101,7 +97,6 @@ import spock.lang.Shared;
 import spock.lang.Specification
 
 @FreshRuntime
-@TestMixin(GrailsUnitTestMixin)
 class TestInstanceCallbacksSpec extends Specification {
     def doWithSpring = {
         myService(MyService)
@@ -134,7 +129,6 @@ You can use http://docs.grails.org/latest/api/org/grails/spring/beans/factory/In
 
 [source,groovy]
 ----
-import grails.test.mixin.support.GrailsUnitTestMixin
 import grails.test.runtime.FreshRuntime
 
 import org.grails.spring.beans.factory.InstanceFactoryBean
@@ -144,7 +138,6 @@ import spock.lang.Shared
 import spock.lang.Specification
 
 @FreshRuntime
-@TestMixin(GrailsUnitTestMixin)
 class MockedBeanSpec extends Specification {
     def myService=Mock(MyService)
 
@@ -215,9 +208,7 @@ Adding `static loadExternalBeans = true` field definition to a unit test class m
 ----
 import spock.lang.Issue
 import spock.lang.Specification
-import grails.test.mixin.support.GrailsUnitTestMixin
 
-@TestMixin(GrailsUnitTestMixin)
 class LoadExternalBeansSpec extends Specification {
     static loadExternalBeans = true
 
